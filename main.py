@@ -4,7 +4,7 @@ import mysql.connector as mysql
 mydb = mysql.connect(
     host="localhost",
     user="root",
-    passwd="1234",
+    passwd="****",
 )
 dbname = "Teachers"
 db = mydb.cursor()
