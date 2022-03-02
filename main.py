@@ -1,10 +1,9 @@
 import mysql.connector as mysql
 
-# connect to mysql
 mydb = mysql.connect(
     host="localhost",
     user="root",
-    passwd="****",
+    passwd="1234",
 )
 dbname = "Teachers"
 db = mydb.cursor()
@@ -27,7 +26,7 @@ while True:
         age = input("Enter age: ")
         salary = input("Enter salary: ")
         department = input("Enter department: ")
-        db.execute("INSERT INTO " + dbname + " (name, age, salary) VALUES (%s, %s, %s, %s)", (name, age, salary, department))
+        db.execute("INSERT INTO " + dbname + " (name, age, salary, department) VALUES (%s, %s, %s, %s)", (name, age, salary, department))
         mydb.commit()
         print("Record inserted successfully")
     elif choice == "2":
@@ -48,5 +47,3 @@ while True:
         break
     else:
         print("Invalid choice")
-
-
