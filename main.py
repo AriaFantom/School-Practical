@@ -1,5 +1,5 @@
 import mysql.connector as mysql
-
+import pandas as pd
 mydb = mysql.connect(
     host="localhost",
     user="root",
@@ -44,6 +44,12 @@ while True:
         mydb.commit()
         print("Record updated successfully")
     elif choice == "4":
+        filename = input("Enter file name: ")
+        columns = ['name', 'age', 'salary', 'department']
+        df = pd.read_csv(filename, names=columns)
+        df.to_sql(dbname, mydb, if_exists='append', index=False)
+        df = pd.read_sql("SELECT * FROM " + dbname, mydb)   
+    elif choice == "5":
         break
     else:
         print("Invalid choice")

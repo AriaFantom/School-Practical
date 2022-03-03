@@ -1,6 +1,3 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 import mysql.connector as mysql
 
 #data to be inserted as bulk
