@@ -6,10 +6,10 @@
 
 ## Installation
 
-Install my-project with npm
+Install my-project with pip
 
 ```bash
-  pip install pandas mathplotlib numpy mysqlconnector
+  pip install -r requirements.txt
 
 ```
     
