@@ -24,15 +24,18 @@ else:
         df.groupby('department').mean()['salary'].plot(kind='bar')
         plt.show()
     elif choice == "2":
-       db.execute("USE " + dbname)
-       db.execute("SELECT department, COUNT(*) FROM " + dbname + " GROUP BY department")
-       data = db.fetchall()
-       departments = [x[0] for x in data]
-       counts = [x[1] for x in data]
-       plt.pie(counts, labels=departments, autopct="%1.1f%%")
-       plt.show()
+        db.execute("USE " + dbname)
+        db.execute("SELECT department, COUNT(*) FROM " + dbname +
+                   " GROUP BY department")
+        data = db.fetchall()
+        departments = [x[0] for x in data]
+        counts = [x[1] for x in data]
+        plt.pie(counts, labels=departments, autopct="%1.1f%%")
+        plt.show()
     elif choice == "3":
-            db.execute("USE " + dbname)
-            df = pd.read_sql("SELECT * FROM " + dbname, mydb)
-            df.plot.bar(x='name', y='salary', rot=0)
-            plt.show()
+        db.execute("USE " + dbname)
+        df = pd.read_sql("SELECT * FROM " + dbname, mydb)
+        df.plot.bar(x='name', y='salary', rot=0)
+        plt.show()
+    else:
+        print("Invalid choice")
