@@ -1,7 +1,11 @@
 import mysql.connector as mysql
 
 #data to be inserted as bulk
-data = [("Lucy", 20, 29000, "Biology"), ("Adam", 22, 56000, "History"), ("Cypher", 25, 78000, "Geography")]
+data = [
+    ("Lucy", 20, 29000, "Biology"),
+    ("Adam", 22, 56000, "History"),
+    ("Cypher", 25, 78000, "Geography")
+    ]
 
 
 mydb = mysql.connect(

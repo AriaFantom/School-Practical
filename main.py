@@ -18,7 +18,8 @@ while True:
     1. Insert Data
     2. Delete Record
     3. Update Record
-    4. Exit
+    4. Add Data From CSV
+    5. Exit
     """)
     choice = input("Enter your choice: ")
     if choice == "1":
