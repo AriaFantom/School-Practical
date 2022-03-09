@@ -19,7 +19,9 @@ while True:
     2. Delete Record
     3. Update Record
     4. Add Data From CSV
-    5. Exit
+    5. Show all the Data from a Dataframe
+    6. Search for a teacher with ID
+    7. Exit
     """)
     choice = input("Enter your choice: ")
     if choice == "1":
@@ -49,8 +51,21 @@ while True:
         columns = ['name', 'age', 'salary', 'department']
         df = pd.read_csv(filename, names=columns)
         df.to_sql(dbname, mydb, if_exists='append', index=False)
-        df = pd.read_sql("SELECT * FROM " + dbname, mydb)   
+        df = pd.read_sql("SELECT * FROM " + dbname, mydb)
     elif choice == "5":
+         db.execute("USE " + dbname)
+         db.execute("SELECT * FROM " + dbname)
+         data = db.fetchall()
+         df = pd.DataFrame(data, columns=['id','name', 'age', 'salary', 'department'])
+         print(df)
+    elif choice == "6":
+        seach = input("Enter the ID to Search: ")
+        db.execute("USE " + dbname)
+        db.execute("SELECT * FROM " + dbname + " WHERE id = %s", (seach,))
+        data = db.fetchall()
+        df = pd.DataFrame(data, columns=['id','name', 'age', 'salary', 'department'])
+        print(df)       
+    elif choice == "7":
         break
     else:
         print("Invalid choice")
