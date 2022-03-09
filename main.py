@@ -48,10 +48,11 @@ while True:
         print("Record updated successfully")
     elif choice == "4":
         filename = input("Enter file name: ")
-        columns = ['name', 'age', 'salary', 'department']
-        df = pd.read_csv(filename, names=columns)
-        df.to_sql(dbname, mydb, if_exists='append', index=False)
-        df = pd.read_sql("SELECT * FROM " + dbname, mydb)
+        df = pd.read_csv(filename)
+        for index, row in df.iterrows():
+            db.execute("INSERT INTO " + dbname + " (name, age, salary, department) VALUES (%s, %s, %s, %s)", (row['name'], row['age'], row['salary'], row['department']))
+            mydb.commit()
+        print("Data added successfully")
     elif choice == "5":
          db.execute("USE " + dbname)
          db.execute("SELECT * FROM " + dbname)
